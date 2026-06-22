@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI Monitor</title>
+    <style>
+        /* 見やすくするために少しスタイルを追加 */
+        body { font-family: sans-serif; padding: 20px;}
+        #role {
+            text-align: left;
+            color: #333;
+            font-size: 30px; 
+            font-weight: bold; 
+        }
+        #chat-box {
+            text-align: center;
+            margin-top: 20px; 
+            font-size: 24px; 
+            font-weight: bold; 
+            color: #333; 
+            border: 2px solid #eee;
+            padding: 20px;
+            border-radius: 10px;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="role">ぬいぐるみ:</div>
+    <div id="chat-box">待機中...</div>
+    <script>
+        const ws = new WebSocket("ws://" + window.location.host + "/ws-browser");
+        ws.onopen = function() {
+            console.log("Browser connected to monitor.");
+        }
+        ws.onmessage = function(event) {
+            const chatbox = document.getElementById("chat-box");
+            chatbox.innerText = event.data;
+        }
+    </script>
+</body>
+</html>

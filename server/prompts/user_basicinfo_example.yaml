@@ -1,0 +1,12 @@
+basic_info:
+  name: はるか
+  gender: null
+  affiliation: null
+  family: []
+  likes:
+  - メロンパン
+  - 焼きそば
+  - 水色
+  - 黄色
+  dislikes: []
+  first_person: 私
